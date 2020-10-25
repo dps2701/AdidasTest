@@ -10,11 +10,12 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import com.adidas.javautil.GenericJavaMethods;
+import com.adidas.waitutil.Wait;
 
 public class HomePage {
 
 	WebDriver driver;
-
+    static int count=0;
 	@FindBy(how=How.XPATH, using="//a[text()='Laptops']")
 	WebElement laptopsLink;
 
@@ -33,9 +34,11 @@ public class HomePage {
 	}
 	public void navigateTo_HomePage() {
 		driver.get(GenericJavaMethods.getInstance().getHomePageURL());
+		Wait.untilPageLoadComplete(driver);
 	}
 	public void navigateTo_Laptops(){
 		laptopsLink.click();
+		Wait.untilPageLoadComplete(driver);
 	}
 	public void navigateTo_Phones(){
 		phonesLink.click();
@@ -44,12 +47,22 @@ public class HomePage {
 		monitorsLink.click();
 	}
 	
-	public void select_Laptop(String laptopName){
+	public void select_Laptop(){
+		String laptopNames=GenericJavaMethods.getInstance().getLaptopsToBeAdded();
+		String[] laptopNameArr= laptopNames.split(",");
+		String name=null;
 		for(WebElement s : allLaptops){
-			String name= s.getText();
-			if(name.equalsIgnoreCase(laptopName)){
-				s.click();
+			try{
+			 name= s.getText();
+			}catch(Exception e){
+				driver.navigate().refresh();
 			}
+		    if(name.equalsIgnoreCase(laptopNameArr[count])){
+				s.click();
+				count++;
+				break;
+			}
+			
 		}
 	}
 }

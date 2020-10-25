@@ -1,2 +1,6 @@
-C:\Users\divsingh6\workspace\Test\src\main\java\com\adidas\managers\AdidasWebDriverManager.java
-C:\Users\divsingh6\workspace\Test\src\main\java\com\adidas\javautil\GenericJavaMethods.java
+C:\Users\divsingh6\workspace\AdidasDemoTest\src\main\java\com\adidas\pageobjects\HomePage.java
+C:\Users\divsingh6\workspace\AdidasDemoTest\src\main\java\com\adidas\pageobjects\CartPage.java
+C:\Users\divsingh6\workspace\AdidasDemoTest\src\main\java\com\adidas\waitutil\Wait.java
+C:\Users\divsingh6\workspace\AdidasDemoTest\src\main\java\com\adidas\managers\AdidasWebDriverInitializer.java
+C:\Users\divsingh6\workspace\AdidasDemoTest\src\main\java\com\adidas\javautil\GenericJavaMethods.java
+C:\Users\divsingh6\workspace\AdidasDemoTest\src\main\java\com\adidas\pageobjects\AddToCartPage.java

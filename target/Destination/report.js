@@ -1,13 +1,18 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("file:src/test/resources/Adidas.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("classpath:FeatureFiles/Adidas.feature");
 formatter.feature({
-  "name": "Adidas Test",
+  "name": "Adidas API Test",
   "description": "",
   "keyword": "Feature"
 });
 formatter.scenario({
   "name": "Validate available pets, add a pet, update the pet details and delete the pet",
   "description": "",
-  "keyword": "Scenario"
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "name": "@AdidasAPITest"
+    }
+  ]
 });
 formatter.step({
   "name": "I retrieve available pets",

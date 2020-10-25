@@ -6,13 +6,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.PropertiesConfiguration;
+
 public class GenericJavaMethods{
 private Properties properties;
 private static GenericJavaMethods configReader;
-
+String propertyFilePath = "Config//Config.properties";
    private GenericJavaMethods() {
 BufferedReader reader;
-    	String propertyFilePath = "Config//Config.properties";
+    	
         try {
             reader = new BufferedReader(new FileReader(propertyFilePath));
             properties = new Properties();
@@ -33,6 +36,11 @@ BufferedReader reader;
     configReader = new GenericJavaMethods();
    	}
        return configReader;
+   }
+   public void setProperty(String key, String value) throws ConfigurationException{
+   PropertiesConfiguration conf = new PropertiesConfiguration(propertyFilePath);
+   conf.setProperty(key, value);
+   conf.save();   
    }
 
    public String getBaseUrl() {
@@ -90,5 +98,15 @@ BufferedReader reader;
        String url = properties.getProperty("URL");
        if(url != null) return url;
        else throw new RuntimeException("url not specified in the Config.properties file.");
+   }
+   public String getLaptopsToBeAdded() {
+       String laptops = properties.getProperty("LaptopsToBeAdded");
+       if(laptops != null) return laptops;
+       else throw new RuntimeException("LaptopsToBeAdded not specified in the Config.properties file.");
+   }
+   public String getLaptopsToBeDeleted() {
+       String laptops = properties.getProperty("LaptopsToBeDeleted");
+       if(laptops != null) return laptops;
+       else throw new RuntimeException("LaptopsToBeDeleted not specified in the Config.properties file.");
    }
 }
